@@ -8,15 +8,22 @@
 
 import UIKit
 
+/// 一个表格的数据源
 public class TableView {
+    /// 数据分组对应的数组
     public var groups:[Group] = []
+    /// 弱引用`UITableView`对象
     public weak var tableView:UITableView?
     private lazy var dataSource:TableView.DataSource = { TableView.DataSource(self) }()
     
+    /// 初始化一个`UITableView`的数据源
+    /// - Parameter tableView: 需要数据托管的`UITableView`
     public init(tableView:UITableView?) {
         self.tableView = tableView
     }
     
+    /// 添加一个数据源分组
+    /// - Parameter block: 配置分组的`Group`
     public func addGroup(_ block:((Group) -> Void)) {
         let group = Group()
         group.tableView = tableView
@@ -24,12 +31,14 @@ public class TableView {
         block(group)
     }
     
+    /// 设置`UITableView`数据源代理并刷新
     public func reloadData() {
         tableView?.dataSource = dataSource
         tableView?.delegate = dataSource
         tableView?.reloadData()
     }
     
+    /// 清理之前添加的数据源 防止重复添加
     public func clearData() {
         groups.removeAll()
     }
@@ -37,10 +46,18 @@ public class TableView {
 
 extension TableView {
     public class Group {
+        /// 弱引用数据源托管的`UITableView`
         public weak var tableView:UITableView?
+        /// 分组对应添加的`Cell`
         public var cellls:[Cell] = []
+        /// `UITableView`对应`Header`的配置
         public var header:HeaderFooter?
+        /// `UITableView`对应的`Footer`的配置
         public var footer:HeaderFooter?
+        /// 添加一个或者一组的`Cell`
+        /// - Parameters:
+        ///   - type: 对应`UITableViewCell`或者子类的类型
+        ///   - block: 配置`Cell`
         public func addCell<T:UITableViewCell>(_ type:T.Type = T.self, _ block:(Cell) -> Void) {
             let identifier = "\(T.self)"
             guard let tableView = tableView else {
@@ -52,6 +69,10 @@ extension TableView {
             block(cell)
         }
         
+        /// 添加一个`Header`
+        /// - Parameters:
+        ///   - type: 对应`UITableViewHeaderFooterView`或者子类的类型
+        ///   - block: 配置`HeaderFooter`
         public func addHeader<T:UITableViewHeaderFooterView>(_ type:T.Type, _ block:(HeaderFooter) -> Void) {
             let identifier = "\(T.self)"
             guard let tableView = tableView else {
@@ -63,6 +84,10 @@ extension TableView {
             block(header)
         }
         
+        /// 添加一个`Footer`
+        /// - Parameters:
+        ///   - type: `UITableViewHeaderFooterView`或者子类类型
+        ///   - block: 配置`HeaderFooter`
         public func addFooter<T:UITableViewHeaderFooterView>(_ type:T.Type, _ block:(HeaderFooter) -> Void) {
             let identifier = "\(T.self)"
             guard let tableView = tableView else {
@@ -74,6 +99,8 @@ extension TableView {
             block(header)
         }
         
+        /// 获取对应分组下面`UITableViewCell`个数
+        /// - Returns: `UITableViewCell`个数
         public func cellCount() -> Int {
             var count = 0
             for cell in cellls {
@@ -82,6 +109,9 @@ extension TableView {
             return count
         }
         
+        /// 获取`IndexPath`对应`Cell`和在`Cell`的索引
+        /// - Parameter indexPath: 当前的`IndexPath`
+        /// - Returns: 对应`Cell`数据源和`Cell`对应的索引的元组
         public func cellIndex(indexPath:IndexPath) -> (Cell,Int)? {
             var count = 0
             for cell in cellls {
