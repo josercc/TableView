@@ -11,10 +11,6 @@ import UIKit
 extension TableView {
     open class DataSource:NSObject, UITableViewDataSource, UITableViewDelegate {
         public weak var tableView:TableView?
-        public init(_ tableView:TableView?) {
-            self.tableView = tableView
-            super.init()
-        }
         
         open func numberOfSections(in tableView: UITableView) -> Int {
             guard let count = self.tableView?.groups.count else {

@@ -14,12 +14,14 @@ public class TableView {
     public var groups:[Group] = []
     /// 弱引用`UITableView`对象
     public weak var tableView:UITableView?
-    private lazy var dataSource:TableView.DataSource = { TableView.DataSource(self) }()
+    private var dataSource:TableView.DataSource
     
     /// 初始化一个`UITableView`的数据源
     /// - Parameter tableView: 需要数据托管的`UITableView`
-    public init(tableView:UITableView?) {
+    public init(tableView:UITableView?, dataSource:TableView.DataSource? = nil) {
         self.tableView = tableView
+        self.dataSource = dataSource ?? DataSource()
+        self.dataSource.tableView = self
     }
     
     /// 添加一个数据源分组
