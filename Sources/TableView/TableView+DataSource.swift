@@ -55,12 +55,13 @@ extension TableView {
         }
         
         open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            guard let groups = self.tableView?.groups else {
+            guard let group = self.tableView?.groups[indexPath.section],
+                  let cellIndex = group.cellIndex(indexPath: indexPath) else {
                 return UITableView.automaticDimension
             }
-            let group = groups[indexPath.section]
-            guard let cellIndex = group.cellIndex(indexPath: indexPath) else {
-                return UITableView.automaticDimension
+            if let customHeightHandle = cellIndex.0.customHeightHandle {
+                let data = cellIndex.0.data[cellIndex.1]
+                return customHeightHandle(tableView,cellIndex.0,data,indexPath,cellIndex.1)
             }
             return cellIndex.0.height
         }

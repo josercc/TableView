@@ -130,11 +130,18 @@ extension TableView {
 
 extension TableView {
     public class Cell {
+        /// 自定义高度的回掉
+        public typealias CustomHeightHandle<D> = (_ tableView:UITableView,
+                                                                     _ cell:TableView.Cell,
+                                                                     _ data:D,
+                                                                     _ indexPath:IndexPath,
+                                                                     _ index:Int) -> CGFloat
         public var data:[Any] = []
         public let identifier:String
         public var height:CGFloat = UITableView.automaticDimension
         var configCell:((UITableView,UITableViewCell,IndexPath,Int) -> Void)? = nil
         var didSelectCell:((UITableView,Any,IndexPath,Int) -> Void)? = nil
+        var customHeightHandle:CustomHeightHandle<Any>?
         
         public init(identifier:String) {
             self.identifier = identifier
@@ -148,12 +155,30 @@ extension TableView {
                 block(tableView,_cell, _data,indexPath,index)
             }
         }
+        /// 进行配置
+        public func configCell<C:UITableViewCell>(tableView:UITableView,
+                                                     cell:C,
+                                                     indexPath:IndexPath,
+                                                     index:Int) {
+            configCell?(tableView,cell,indexPath,index)
+        }
+        
         public func didSelect<T:UITableViewCell, D>(_ cellType:T.Type, _ dataType:D.Type, _ block:@escaping ((UITableView, T, D, IndexPath, Int) -> Void)) {
             didSelectCell = { (tableView, data, indexPath, index) in
                 guard let _data = data as? D, let cell = tableView.cellForRow(at: indexPath) as? T else {
                     return
                 }
                 block(tableView,cell,_data,indexPath,index)
+            }
+        }
+        
+        public func height<D>(_ dataType:D.Type,
+                              _ block:@escaping CustomHeightHandle<D>) {
+            customHeightHandle = { (tableView,cell,data,indexPath,index) in
+                guard let data = data as? D else {
+                    return UITableView.automaticDimension
+                }
+                return block(tableView,cell,data,indexPath,index)
             }
         }
     }
