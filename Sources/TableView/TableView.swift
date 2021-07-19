@@ -14,19 +14,22 @@ public class TableView {
     public var groups:[Group] = []
     /// 弱引用`UITableView`对象
     public weak var tableView:UITableView?
+    /// 默认的`UITableView`数据源
     private var dataSource:TableView.DataSource
     
     /// 初始化一个`UITableView`的数据源
     /// - Parameter tableView: 需要数据托管的`UITableView`
-    public init(tableView:UITableView?, dataSource:TableView.DataSource? = nil) {
+    public init(tableView:UITableView,
+                dataSource:TableView.DataSource? = nil) {
         self.tableView = tableView
         self.dataSource = dataSource ?? DataSource()
         self.dataSource.tableView = self
     }
     
+    public typealias AddGroupBlock = (_ group:Group) -> Void
     /// 添加一个数据源分组
     /// - Parameter block: 配置分组的`Group`
-    public func addGroup(_ block:((Group) -> Void)) {
+    public func addGroup(_ block:AddGroupBlock) {
         let group = Group()
         group.tableView = tableView
         groups.append(group)
@@ -56,31 +59,37 @@ extension TableView {
         public var header:HeaderFooter?
         /// `UITableView`对应的`Footer`的配置
         public var footer:HeaderFooter?
+        
+        public typealias AddCellBlock = (_ cell:Cell) -> Void
         /// 添加一个或者一组的`Cell`
         /// - Parameters:
         ///   - type: 对应`UITableViewCell`或者子类的类型
         ///   - block: 配置`Cell`
-        public func addCell<T:UITableViewCell>(_ type:T.Type = T.self, _ block:(Cell) -> Void) {
-            let identifier = "\(T.self)"
+        public func addCell<C:UITableViewCell>(_ type:C.Type,
+                                               _ block:AddCellBlock,
+                                               identifier:String = "\(C.self)") {
             guard let tableView = tableView else {
                 return
             }
-            tableView.register(T.self, forCellReuseIdentifier: identifier)
+            tableView.register(C.self, forCellReuseIdentifier: identifier)
             let cell = Cell(identifier: identifier)
             cellls.append(cell)
             block(cell)
         }
         
+        
+        public typealias AddHeaderFooterBlock = (_ headerFooter:HeaderFooter) -> Void
         /// 添加一个`Header`
         /// - Parameters:
         ///   - type: 对应`UITableViewHeaderFooterView`或者子类的类型
         ///   - block: 配置`HeaderFooter`
-        public func addHeader<T:UITableViewHeaderFooterView>(_ type:T.Type, _ block:(HeaderFooter) -> Void) {
-            let identifier = "\(T.self)"
+        public func addHeader<HF:UITableViewHeaderFooterView>(_ type:HF.Type,
+                                                             _ block:AddHeaderFooterBlock,
+                                                             identifier:String = "\(HF.self)") {
             guard let tableView = tableView else {
                 return
             }
-            tableView.register(T.self, forHeaderFooterViewReuseIdentifier: identifier)
+            tableView.register(HF.self, forHeaderFooterViewReuseIdentifier: identifier)
             let header = HeaderFooter(identifier: identifier)
             self.header = header
             block(header)
@@ -90,12 +99,13 @@ extension TableView {
         /// - Parameters:
         ///   - type: `UITableViewHeaderFooterView`或者子类类型
         ///   - block: 配置`HeaderFooter`
-        public func addFooter<T:UITableViewHeaderFooterView>(_ type:T.Type, _ block:(HeaderFooter) -> Void) {
-            let identifier = "\(T.self)"
+        public func addFooter<HF:UITableViewHeaderFooterView>(_ type:HF.Type,
+                                                             _ block:AddHeaderFooterBlock,
+                                                             identifier:String = "\(HF.self)") {
             guard let tableView = tableView else {
                 return
             }
-            tableView.register(T.self, forHeaderFooterViewReuseIdentifier: identifier)
+            tableView.register(HF.self, forHeaderFooterViewReuseIdentifier: identifier)
             let header = HeaderFooter(identifier: identifier)
             self.footer = header
             block(header)
@@ -132,22 +142,30 @@ extension TableView {
     public class Cell {
         /// 自定义高度的回掉
         public typealias CustomHeightHandle<D> = (_ tableView:UITableView,
-                                                                     _ cell:TableView.Cell,
-                                                                     _ data:D,
-                                                                     _ indexPath:IndexPath,
-                                                                     _ index:Int) -> CGFloat
+                                                  _ cell:TableView.Cell,
+                                                  _ data:D,
+                                                  _ indexPath:IndexPath,
+                                                  _ index:Int) -> CGFloat
         public var data:[Any] = []
         public let identifier:String
         public var height:CGFloat = UITableView.automaticDimension
         var configCell:((UITableView,UITableViewCell,IndexPath,Int) -> Void)? = nil
         var didSelectCell:((UITableView,Any,IndexPath,Int) -> Void)? = nil
         var customHeightHandle:CustomHeightHandle<Any>?
+        var automaticDimensionHeights:[IndexPath:CGFloat] = [:]
         
         public init(identifier:String) {
             self.identifier = identifier
         }
         
-        public func config<T:UITableViewCell, D>(_ cellType:T.Type, _ dataType:D.Type, _ block:@escaping ((UITableView, T, D, IndexPath, Int) -> Void)) {
+        public typealias ConfigBlock<C:UITableViewCell, D> = (_ tableView:UITableView,
+                                                              _ tableViewCell:C,
+                                                              _ data:D,
+                                                              _ indexPath:IndexPath,
+                                                              _ index:Int) -> Void
+        public func config<T:UITableViewCell, D>(_ cellType:T.Type,
+                                                 _ dataType:D.Type,
+                                                 _ block:@escaping ConfigBlock<T,D>) {
             configCell = { (tableView,cell,indexPath,index) in
                 guard let _cell = cell as? T, let _data = self.data[index] as? D else {
                     return
@@ -163,7 +181,14 @@ extension TableView {
             configCell?(tableView,cell,indexPath,index)
         }
         
-        public func didSelect<T:UITableViewCell, D>(_ cellType:T.Type, _ dataType:D.Type, _ block:@escaping ((UITableView, T, D, IndexPath, Int) -> Void)) {
+        public typealias DidSelectBlock<C:UITableViewCell,D> = (_ tableView:UITableView,
+                                                                _ tableViewCell:C,
+                                                                _ data:D,
+                                                                _ indexPath:IndexPath,
+                                                                _ index:Int) -> Void
+        public func didSelect<T:UITableViewCell, D>(_ cellType:T.Type,
+                                                    _ dataType:D.Type,
+                                                    _ block:@escaping DidSelectBlock<T,D>) {
             didSelectCell = { (tableView, data, indexPath, index) in
                 guard let _data = data as? D, let cell = tableView.cellForRow(at: indexPath) as? T else {
                     return
@@ -176,7 +201,7 @@ extension TableView {
                               _ block:@escaping CustomHeightHandle<D>) {
             customHeightHandle = { (tableView,cell,data,indexPath,index) in
                 guard let data = data as? D else {
-                    return UITableView.automaticDimension
+                    return self.height
                 }
                 return block(tableView,cell,data,indexPath,index)
             }
