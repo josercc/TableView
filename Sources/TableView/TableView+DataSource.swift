@@ -30,14 +30,12 @@ extension TableView {
                   let cellIndex = group.cellIndex(indexPath: indexPath) else {
                 return UITableViewCell()
             }
-            print("cellForRowAt\(indexPath) 1")
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIndex.0.identifier, for: indexPath)
             if let block = cellIndex.0.configCell {
                 block(tableView,cell,indexPath,cellIndex.1)
             }
             if let automaticDimensionCell = cell as? AutomaticDimensionCell {
                 automaticDimensionCell.ad.needReloadCellHeightHandle = {
-                    print("needReloadCellHeightHandle")
                     cell.contentView.layoutIfNeeded()
                     cellIndex.0.automaticDimensionHeights[indexPath] = automaticDimensionCell.ad.view.frame.maxY
                 }
@@ -63,7 +61,6 @@ extension TableView {
                   let cellIndex = group.cellIndex(indexPath: indexPath) else {
                 return UITableView.automaticDimension
             }
-            print("heightForRowAt\(indexPath) 1")
             if let customHeightHandle = cellIndex.0.customHeightHandle {
                 let data = cellIndex.0.data[cellIndex.1]
                 return customHeightHandle(tableView,cellIndex.0,data,indexPath,cellIndex.1)
@@ -71,7 +68,6 @@ extension TableView {
             if let automaticDimensionHeight = cellIndex.0.automaticDimensionHeights[indexPath] {
                 return automaticDimensionHeight
             }
-            print("heightForRowAt\(indexPath) 2")
             return cellIndex.0.height
         }
         
