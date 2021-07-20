@@ -18,4 +18,11 @@ public class AutomaticDimension {
     /// 需要刷新高度
     public typealias NeedReloadCellHeightHandle = () -> Void
     var needReloadCellHeightHandle:NeedReloadCellHeightHandle?
+    
+    /// 刷新`Cell`高度完毕
+    /// - Parameter isCompletion: 是否刷新完毕
+    public typealias ReloadCellHeightCompletion = (_ isCompletion:Bool) -> Void
+    /// 立即执行刷新高度操作
+    public typealias ReloadCellHeightHandle = (_ completionHandle:@escaping ReloadCellHeightCompletion) -> Void
+    var reloadCellHeightHandle:ReloadCellHeightHandle?
 }

@@ -39,6 +39,16 @@ extension TableView {
                     cell.contentView.layoutIfNeeded()
                     cellIndex.0.automaticDimensionHeights[indexPath] = automaticDimensionCell.ad.view.frame.maxY
                 }
+                automaticDimensionCell.ad.reloadCellHeightHandle = { completionHandle in
+                    automaticDimensionCell.needReloadHeight()
+                    if #available(iOS 11.0, *) {
+                        tableView.performBatchUpdates({}, completion: {completionHandle($0)})
+                    } else {
+                        tableView.beginUpdates()
+                        tableView.endUpdates()
+                        completionHandle(true)
+                    }
+                }
                 if !cellIndex.0.automaticDimensionHeights.keys.contains(indexPath) {
                     automaticDimensionCell.needReloadHeight()
                 }

@@ -26,9 +26,14 @@ public extension AutomaticDimensionCell {
         return ad
     }
     
-    /// 需要进行刷新高度
+    /// 需要进行刷新高度 只是计算高度 等待下次掉用`heightForRow`
     func needReloadHeight() {
         self.ad.needReloadCellHeightHandle?()
+    }
+    
+    /// 立即进行刷新 执行`performBatchUpdates`
+    func reloadHeight(completionHandle:@escaping AutomaticDimension.ReloadCellHeightCompletion) {
+        self.ad.reloadCellHeightHandle?(completionHandle)
     }
     
     /// 设置底部视图的约束
