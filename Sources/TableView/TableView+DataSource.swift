@@ -49,7 +49,8 @@ extension TableView {
                         completionHandle(true)
                     }
                 }
-                if !cellIndex.0.automaticDimensionHeights.keys.contains(indexPath) {
+                if !cellIndex.0.automaticDimensionHeights.keys.contains(indexPath)
+                    && cellIndex.0.height == UITableView.automaticDimension {
                     automaticDimensionCell.needReloadHeight()
                 }
             }
@@ -75,7 +76,8 @@ extension TableView {
                 let data = cellIndex.0.data[cellIndex.1]
                 return customHeightHandle(tableView,cellIndex.0,data,indexPath,cellIndex.1)
             }
-            if let automaticDimensionHeight = cellIndex.0.automaticDimensionHeights[indexPath] {
+            if let automaticDimensionHeight = cellIndex.0.automaticDimensionHeights[indexPath],
+               cellIndex.0.height == UITableView.automaticDimension{
                 return automaticDimensionHeight
             }
             return cellIndex.0.height
