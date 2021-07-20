@@ -19,7 +19,7 @@ let tableView = UITableView(frame: .zero, style: .plain)
 let dataSource = TableView(tableView: tableView)
 ```
 
-这样就创建一个实现默认数据源和代理，我们只需要关心我们表格的怎么组成即可。怎么组成一个简单可扩展的数据源，可以看下面的教程。(In this way, we can create a default data source and proxy. We only need to care about the composition of our table.How to form a simple and extensible data source, you can see the following tutorial.)
+这样就创建一个实现默认数据源和代理，我们只需要关心我们表格的怎么组成即可。怎么组成一个简单可扩展的数据源，可以看下面的教程。
 
 ### 创建一个自定义的代理数据源
 
