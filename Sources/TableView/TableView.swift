@@ -9,7 +9,9 @@
 import UIKit
 
 /// 一个表格的数据源
+/// 可以快速搭建基于`UITableView`的列表或者复杂的UI界面，支持高度自动计算，自动缓存高度，便捷的高度刷新。
 public class TableView {
+
     /// 数据分组对应的数组
     public var groups:[Group] = []
     /// 弱引用`UITableView`对象
