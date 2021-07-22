@@ -16,4 +16,8 @@ jobs:
           module-name: TableView
           format: html
           output: "docs"
+      - name: git status
+        run: git status
+
+          
 
