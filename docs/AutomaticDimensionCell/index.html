@@ -40,7 +40,8 @@
 <pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="type">AutomaticDimensionCell</span>: <span class="type">UITableViewCell</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
-    <p>自动计算高度协议</p>
+    <p>自动计算高度协议
+如果想让<code>UITableViewCell</code>支持自动计算高度，则需要实现<code>AutomaticDimensionCell</code>协议</p>
 
 </div>
 <section id="relationships">
@@ -98,6 +99,10 @@
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="keyword">var</span> <span class="variable">ad</span>:<a href="/TableView/AutomaticDimension"><span class="type">AutomaticDimension</span></a>  </body></html></code></pre>
 </div>
+<div class="summary" role="doc-abstract">
+    <p>实现自动计算高度关联内容</p>
+
+</div>
 </div>
 <div role="article" class="function" id="automaticdimensioncell.needreloadheight()">
     <h3>
@@ -122,6 +127,25 @@
     <p>立即进行刷新 执行<code>performBatchUpdates</code></p>
 
 </div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>completion​Handle</th>
+    <td><code class="type">@escaping Automatic​Dimension.​Reload​Cell​Height​Completion</code></td>
+    <td><p>刷新完毕的回掉</p>
+</td>
+</tr>
+  </tbody>
+</table>
 </div>
 <div role="article" class="function" id="automaticdimensioncell.setbottomviewconstraints(constraints:)">
     <h3>
@@ -131,7 +155,7 @@
 <pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">setBottomViewConstraints</span>(<span class="variable">constraints</span>:<a href="/TableView/AutomaticDimension"><span class="type">AutomaticDimension</span></a>.<span class="type">Constraints</span>)  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
-    <p>设置底部视图的约束</p>
+    <p>设置底部视图的约束 初始化和更新<code>self.ad.view</code>约束</p>
 
 </div>
 <h4>Parameters</h4>
@@ -163,7 +187,7 @@
 
     <footer>
         <p>
-    Generated on <time datetime="2021-07-22T14:40:24+0800">July 22, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
+    Generated on <time datetime="2021-07-22T15:46:11+0800">July 22, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
 </p>
     </footer>
 </body>

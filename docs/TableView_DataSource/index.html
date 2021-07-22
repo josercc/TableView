@@ -40,7 +40,7 @@
 <pre class="highlight"><code><html><body><span class="attribute">open</span> <span class="keyword">class</span> <span class="type">DataSource</span>:<span class="type">NSObject</span>, <span class="type">UITableViewDataSource</span>, <span class="type">UITableViewDelegate</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
-    <p>代理和数据源</p>
+    <p>代理和数据源 如果想自定义或者实现<code>UITableViewDataSource|UITableViewDelegate</code>其他协议方法 请继承重写</p>
 
 </div>
 <section id="relationships">
@@ -65,39 +65,39 @@
 </a>
 </g>
 </g>
-<!-- UITableViewDelegate -->
-<g id="node2" class="node unknown">
-<title>UITableViewDelegate</title>
-<path fill="none" stroke="black" d="M1067.98,-161.31C1067.98,-161.31 875.98,-161.31 875.98,-161.31 869.98,-161.31 863.98,-155.31 863.98,-149.31 863.98,-149.31 863.98,-137.31 863.98,-137.31 863.98,-131.31 869.98,-125.31 875.98,-125.31 875.98,-125.31 1067.98,-125.31 1067.98,-125.31 1073.98,-125.31 1079.98,-131.31 1079.98,-137.31 1079.98,-137.31 1079.98,-149.31 1079.98,-149.31 1079.98,-155.31 1073.98,-161.31 1067.98,-161.31"/>
-<text text-anchor="middle" x="971.98" y="-139.61" font-family="Menlo" font-size="14.00">UITableViewDelegate</text>
-</g>
-<!-- TableView.DataSource&#45;&gt;UITableViewDelegate -->
-<g id="edge2" class="edge conformsTo">
-<title>TableView.DataSource&#45;&gt;UITableViewDelegate</title>
-<path fill="none" stroke="black" d="M550.2,-129.25C638.48,-132.19 762.99,-136.34 853.85,-139.37"/>
-<polygon fill="black" stroke="black" points="853.81,-142.87 863.92,-139.7 854.04,-135.87 853.81,-142.87"/>
-</g>
 <!-- UITableViewDataSource -->
-<g id="node3" class="node unknown">
+<g id="node2" class="node unknown">
 <title>UITableViewDataSource</title>
-<path fill="none" stroke="black" d="M347.57,-36C347.57,-36 155.57,-36 155.57,-36 149.57,-36 143.57,-30 143.57,-24 143.57,-24 143.57,-12 143.57,-12 143.57,-6 149.57,0 155.57,0 155.57,0 347.57,0 347.57,0 353.57,0 359.57,-6 359.57,-12 359.57,-12 359.57,-24 359.57,-24 359.57,-30 353.57,-36 347.57,-36"/>
-<text text-anchor="middle" x="251.57" y="-14.3" font-family="Menlo" font-size="14.00">UITableViewDataSource</text>
+<path fill="none" stroke="black" d="M1067.98,-161.31C1067.98,-161.31 875.98,-161.31 875.98,-161.31 869.98,-161.31 863.98,-155.31 863.98,-149.31 863.98,-149.31 863.98,-137.31 863.98,-137.31 863.98,-131.31 869.98,-125.31 875.98,-125.31 875.98,-125.31 1067.98,-125.31 1067.98,-125.31 1073.98,-125.31 1079.98,-131.31 1079.98,-137.31 1079.98,-137.31 1079.98,-149.31 1079.98,-149.31 1079.98,-155.31 1073.98,-161.31 1067.98,-161.31"/>
+<text text-anchor="middle" x="971.98" y="-139.61" font-family="Menlo" font-size="14.00">UITableViewDataSource</text>
 </g>
 <!-- TableView.DataSource&#45;&gt;UITableViewDataSource -->
 <g id="edge1" class="edge conformsTo">
 <title>TableView.DataSource&#45;&gt;UITableViewDataSource</title>
+<path fill="none" stroke="black" d="M550.2,-129.25C638.48,-132.19 762.99,-136.34 853.85,-139.37"/>
+<polygon fill="black" stroke="black" points="853.81,-142.87 863.92,-139.7 854.04,-135.87 853.81,-142.87"/>
+</g>
+<!-- NSObject -->
+<g id="node3" class="node unknown">
+<title>NSObject</title>
+<path fill="none" stroke="black" d="M347.57,-36C347.57,-36 155.57,-36 155.57,-36 149.57,-36 143.57,-30 143.57,-24 143.57,-24 143.57,-12 143.57,-12 143.57,-6 149.57,0 155.57,0 155.57,0 347.57,0 347.57,0 353.57,0 359.57,-6 359.57,-12 359.57,-12 359.57,-24 359.57,-24 359.57,-30 353.57,-36 347.57,-36"/>
+<text text-anchor="middle" x="251.57" y="-14.3" font-family="Menlo" font-size="14.00">NSObject</text>
+</g>
+<!-- TableView.DataSource&#45;&gt;NSObject -->
+<g id="edge2" class="edge conformsTo">
+<title>TableView.DataSource&#45;&gt;NSObject</title>
 <path fill="none" stroke="black" d="M410.12,-107.62C377.85,-89.38 327.82,-61.1 292.61,-41.2"/>
 <polygon fill="black" stroke="black" points="293.97,-37.95 283.54,-36.08 290.53,-44.04 293.97,-37.95"/>
 </g>
-<!-- NSObject -->
+<!-- UITableViewDelegate -->
 <g id="node4" class="node unknown">
-<title>NSObject</title>
+<title>UITableViewDelegate</title>
 <path fill="none" stroke="black" d="M204,-233.73C204,-233.73 12,-233.73 12,-233.73 6,-233.73 0,-227.73 0,-221.73 0,-221.73 0,-209.73 0,-209.73 0,-203.73 6,-197.73 12,-197.73 12,-197.73 204,-197.73 204,-197.73 210,-197.73 216,-203.73 216,-209.73 216,-209.73 216,-221.73 216,-221.73 216,-227.73 210,-233.73 204,-233.73"/>
-<text text-anchor="middle" x="108" y="-212.03" font-family="Menlo" font-size="14.00">NSObject</text>
+<text text-anchor="middle" x="108" y="-212.03" font-family="Menlo" font-size="14.00">UITableViewDelegate</text>
 </g>
-<!-- TableView.DataSource&#45;&gt;NSObject -->
+<!-- TableView.DataSource&#45;&gt;UITableViewDelegate -->
 <g id="edge3" class="edge conformsTo">
-<title>TableView.DataSource&#45;&gt;NSObject</title>
+<title>TableView.DataSource&#45;&gt;UITableViewDelegate</title>
 <path fill="none" stroke="black" d="M375.21,-143.65C320.23,-158.48 242.26,-179.52 184.73,-195.04"/>
 <polygon fill="black" stroke="black" points="183.7,-191.69 174.96,-197.67 185.52,-198.45 183.7,-191.69"/>
 </g>
@@ -147,6 +147,10 @@
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">numberOfSections</span>(<span class="variable">in</span> <span class="variable">tableView</span>: <span class="type">UITableView</span>) -&gt; <span class="type">Int</span>  </body></html></code></pre>
 </div>
+<div class="summary" role="doc-abstract">
+    <p>返回<code>Section</code>的个数 默认返回<code>Group</code>的总数</p>
+
+</div>
 </div>
 <div role="article" class="function" id="tableview.datasource.tableview(_:numberofrowsinsection:)">
     <h3>
@@ -154,6 +158,10 @@
     </h3>
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">tableView</span>(<span class="keyword">_</span> <span class="variable">tableView</span>: <span class="type">UITableView</span>, <span class="variable">numberOfRowsInSection</span> <span class="variable">section</span>: <span class="type">Int</span>) -&gt; <span class="type">Int</span>  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>返回对应<code>Section</code>的<code>Row</code>的个数 默认返回对应<code>Section</code>中<code>UITableViewCell</code>的总数</p>
+
 </div>
 </div>
 <div role="article" class="function" id="tableview.datasource.tableview(_:cellforrowat:)">
@@ -163,6 +171,12 @@
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">tableView</span>(<span class="keyword">_</span> <span class="variable">tableView</span>: <span class="type">UITableView</span>, <span class="variable">cellForRowAt</span> <span class="variable">indexPath</span>: <span class="type">IndexPath</span>) -&gt; <span class="type">UITableViewCell</span>  </body></html></code></pre>
 </div>
+<div class="summary" role="doc-abstract">
+    <p>返回对应<code>Group</code>中<code>Cell</code>的<code>UITableViewCell</code>
+第一步会将获取重用或者新创建的<code>UITableViewCell</code>通过配置闭包进行数据配置
+第二步 如果实现了<code>AutomaticDimensionCell</code> 检测设置的高度为<code>UITableView.automaticDimension </code>并且还没有初始化高度 则进行初始化高度</p>
+
+</div>
 </div>
 <div role="article" class="function" id="tableview.datasource.tableview(_:didselectrowat:)">
     <h3>
@@ -170,6 +184,10 @@
     </h3>
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">tableView</span>(<span class="keyword">_</span> <span class="variable">tableView</span>: <span class="type">UITableView</span>, <span class="variable">didSelectRowAt</span> <span class="variable">indexPath</span>: <span class="type">IndexPath</span>)  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>点击<code>UITableViewCell</code>回掉</p>
+
 </div>
 </div>
 <div role="article" class="function" id="tableview.datasource.tableview(_:heightforrowat:)">
@@ -179,6 +197,13 @@
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">tableView</span>(<span class="keyword">_</span> <span class="variable">tableView</span>: <span class="type">UITableView</span>, <span class="variable">heightForRowAt</span> <span class="variable">indexPath</span>: <span class="type">IndexPath</span>) -&gt; <span class="type">CGFloat</span>  </body></html></code></pre>
 </div>
+<div class="summary" role="doc-abstract">
+    <p>设置<code>UITableViewCell</code>的高度
+第一步检查是否设置自定义高度 如果设置则返回自定义高度
+第二部 如果存在自动计算高度 并且<code>height == UITableView.automaticDimension</code>则返回自动计算高度
+第三部 如果第一步和第二部都不符合 则返回对应<code>height</code>高度</p>
+
+</div>
 </div>
 <div role="article" class="function" id="tableview.datasource.tableview(_:viewforheaderinsection:)">
     <h3>
@@ -186,6 +211,10 @@
     </h3>
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">tableView</span>(<span class="keyword">_</span> <span class="variable">tableView</span>: <span class="type">UITableView</span>, <span class="variable">viewForHeaderInSection</span> <span class="variable">section</span>: <span class="type">Int</span>) -&gt; <span class="type">UIView</span>?  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>配置<code>Header</code></p>
+
 </div>
 </div>
 <div role="article" class="function" id="tableview.datasource.tableview(_:viewforfooterinsection:)">
@@ -195,6 +224,10 @@
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">tableView</span>(<span class="keyword">_</span> <span class="variable">tableView</span>: <span class="type">UITableView</span>, <span class="variable">viewForFooterInSection</span> <span class="variable">section</span>: <span class="type">Int</span>) -&gt; <span class="type">UIView</span>?  </body></html></code></pre>
 </div>
+<div class="summary" role="doc-abstract">
+    <p>配置<code>Footer</code></p>
+
+</div>
 </div>
 <div role="article" class="function" id="tableview.datasource.tableview(_:heightforheaderinsection:)">
     <h3>
@@ -203,6 +236,10 @@
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">tableView</span>(<span class="keyword">_</span> <span class="variable">tableView</span>: <span class="type">UITableView</span>, <span class="variable">heightForHeaderInSection</span> <span class="variable">section</span>: <span class="type">Int</span>) -&gt; <span class="type">CGFloat</span>  </body></html></code></pre>
 </div>
+<div class="summary" role="doc-abstract">
+    <p>设置<code>Header</code>高度</p>
+
+</div>
 </div>
 <div role="article" class="function" id="tableview.datasource.tableview(_:heightforfooterinsection:)">
     <h3>
@@ -210,6 +247,10 @@
     </h3>
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">tableView</span>(<span class="keyword">_</span> <span class="variable">tableView</span>: <span class="type">UITableView</span>, <span class="variable">heightForFooterInSection</span> <span class="variable">section</span>: <span class="type">Int</span>) -&gt; <span class="type">CGFloat</span>  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>设置<code>Footer</code>高度</p>
+
 </div>
 </div>
     </section>
@@ -221,7 +262,7 @@
 
     <footer>
         <p>
-    Generated on <time datetime="2021-07-22T14:40:24+0800">July 22, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
+    Generated on <time datetime="2021-07-22T15:46:11+0800">July 22, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
 </p>
     </footer>
 </body>

@@ -39,6 +39,10 @@
 <div class="declaration">
 <pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">Group</span>  </body></html></code></pre>
 </div>
+<div class="summary" role="doc-abstract">
+    <p>表格的<code>Group</code>对象</p>
+
+</div>
 <section id="relationships">
     <h2 hidden>Relationships</h2>
         
@@ -60,6 +64,29 @@
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">typealias</span> <span class="variable">AddCellBlock</span> = (<span class="keyword">_</span> <span class="variable">cell</span>:<span class="type">Cell</span>) -&gt; <span class="type">Void</span></body></html></code></pre>
 </div>
+<div class="summary" role="doc-abstract">
+    <p>在<code>Group</code>添加<code>Cell</code></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>cell</th>
+    <td></td>
+    <td><p>添加的<code>Cell</code>对象</p>
+</td>
+</tr>
+  </tbody>
+</table>
 </div>
 <div role="article" class="typealias" id="tableview.group.addheaderfooterblock">
     <h3>
@@ -68,6 +95,29 @@
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">typealias</span> <span class="variable">AddHeaderFooterBlock</span> = (<span class="keyword">_</span> <span class="variable">headerFooter</span>:<span class="type">HeaderFooter</span>) -&gt; <span class="type">Void</span></body></html></code></pre>
 </div>
+<div class="summary" role="doc-abstract">
+    <p>在<code>Group</code>添加<code>Header</code>或者<code>Footer</code></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>header​Footer</th>
+    <td></td>
+    <td><p>添加的<code>Header</code>或者<code>Footer</code>对象</p>
+</td>
+</tr>
+  </tbody>
+</table>
 </div>
     </section>
     <section id="properties">
@@ -161,6 +211,12 @@
     <td><p>配置<code>Cell</code></p>
 </td>
 </tr>
+<tr>
+    <th>identifier</th>
+    <td><code class="type">String</code></td>
+    <td><p>自定义标识符 默认为<code>UITableViewCell</code>对象类型的类名</p>
+</td>
+</tr>
   </tbody>
 </table>
 </div>
@@ -170,8 +226,8 @@
     </h3>
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">addHeader</span>&lt;<span class="variable">HF</span>:<span class="type">UITableViewHeaderFooterView</span>&gt;(<span class="keyword">_</span> <span class="variable">type</span>:<span class="type">HF</span>.<span class="type">Type</span>,
-                                                             <span class="keyword">_</span> <span class="variable">block</span>:<span class="type">AddHeaderFooterBlock</span>,
-                                                             <span class="variable">identifier</span>:<span class="type">String</span> = <span class="string literal">"</span><span class="string literal"/>\<span class="string literal">(</span><span class="variable">HF</span>.<span class="keyword">self</span><span class="string literal">)</span><span class="string literal"/><span class="string literal">"</span>)  </body></html></code></pre>
+                                                              <span class="keyword">_</span> <span class="variable">block</span>:<span class="type">AddHeaderFooterBlock</span>,
+                                                              <span class="variable">identifier</span>:<span class="type">String</span> = <span class="string literal">"</span><span class="string literal"/>\<span class="string literal">(</span><span class="variable">HF</span>.<span class="keyword">self</span><span class="string literal">)</span><span class="string literal"/><span class="string literal">"</span>)  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>添加一个<code>Header</code></p>
@@ -197,7 +253,13 @@
 <tr>
     <th>block</th>
     <td><code class="type">Add​Header​Footer​Block</code></td>
-    <td><p>配置<code>HeaderFooter</code></p>
+    <td><p>配置<code>Header</code>闭包</p>
+</td>
+</tr>
+<tr>
+    <th>identifier</th>
+    <td><code class="type">String</code></td>
+    <td><p>自定义标识符 默认为<code>UITableViewHeaderFooterView</code>对象的类名</p>
 </td>
 </tr>
   </tbody>
@@ -209,8 +271,8 @@
     </h3>
     <div class="declaration">
 <pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">addFooter</span>&lt;<span class="variable">HF</span>:<span class="type">UITableViewHeaderFooterView</span>&gt;(<span class="keyword">_</span> <span class="variable">type</span>:<span class="type">HF</span>.<span class="type">Type</span>,
-                                                             <span class="keyword">_</span> <span class="variable">block</span>:<span class="type">AddHeaderFooterBlock</span>,
-                                                             <span class="variable">identifier</span>:<span class="type">String</span> = <span class="string literal">"</span><span class="string literal"/>\<span class="string literal">(</span><span class="variable">HF</span>.<span class="keyword">self</span><span class="string literal">)</span><span class="string literal"/><span class="string literal">"</span>)  </body></html></code></pre>
+                                                              <span class="keyword">_</span> <span class="variable">block</span>:<span class="type">AddHeaderFooterBlock</span>,
+                                                              <span class="variable">identifier</span>:<span class="type">String</span> = <span class="string literal">"</span><span class="string literal"/>\<span class="string literal">(</span><span class="variable">HF</span>.<span class="keyword">self</span><span class="string literal">)</span><span class="string literal"/><span class="string literal">"</span>)  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>添加一个<code>Footer</code></p>
@@ -236,7 +298,13 @@
 <tr>
     <th>block</th>
     <td><code class="type">Add​Header​Footer​Block</code></td>
-    <td><p>配置<code>HeaderFooter</code></p>
+    <td><p>配置<code>Footer</code></p>
+</td>
+</tr>
+<tr>
+    <th>identifier</th>
+    <td><code class="type">String</code></td>
+    <td><p>自定义标识符 默认为<code>UITableViewHeaderFooterView</code>对象的类名</p>
 </td>
 </tr>
   </tbody>
@@ -300,7 +368,7 @@
 
     <footer>
         <p>
-    Generated on <time datetime="2021-07-22T14:40:23+0800">July 22, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
+    Generated on <time datetime="2021-07-22T15:46:11+0800">July 22, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
 </p>
     </footer>
 </body>
