@@ -7,9 +7,13 @@
 
 #if canImport(UIKit)
 import UIKit
-
 public extension AutomaticDimension {
+    /// 设置自动计算高度底部视图的约束条件
     struct Constraints {
+        /// 初始化约束条件
+        /// - Parameters:
+        ///   - topView: `self.ad.view`约束的`top view`视图
+        ///   - top: `self.ad.view`距离`top view`的距离
         public init(topView: UIView, top: CGFloat) {
             self.topView = topView
             self.top = top

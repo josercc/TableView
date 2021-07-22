@@ -10,10 +10,12 @@ import UIKit
 import SnapKit
 
 /// 自动计算高度协议
+/// 如果想让`UITableViewCell`支持自动计算高度，则需要实现`AutomaticDimensionCell`协议
 public protocol AutomaticDimensionCell: UITableViewCell {}
 
 public extension AutomaticDimensionCell {
     
+    /// 实现自动计算高度关联内容
     var ad:AutomaticDimension {
         guard let ad = objc_getAssociatedObject(self,
                                                 &AutomaticDimensionKey.automaticDismension) as? AutomaticDimension else {
@@ -33,11 +35,12 @@ public extension AutomaticDimensionCell {
     }
     
     /// 立即进行刷新 执行`performBatchUpdates`
+    /// - Parameter completionHandle: 刷新完毕的回掉
     func reloadHeight(completionHandle:@escaping AutomaticDimension.ReloadCellHeightCompletion) {
         self.ad.reloadCellHeightHandle?(completionHandle)
     }
     
-    /// 设置底部视图的约束
+    /// 设置底部视图的约束 初始化和更新`self.ad.view`约束
     /// - Parameter constraints: 约束条件
     func setBottomViewConstraints(constraints:AutomaticDimension.Constraints) {
         if let superview = self.ad.view.superview {
