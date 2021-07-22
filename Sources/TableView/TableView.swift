@@ -210,6 +210,18 @@ extension TableView {
             }
         }
         
+        /// 主动调用去配置`UITableViewCell`
+        /// - Parameter tableView: 所在的`UITableView`
+        /// - Parameter cell: 所在的`Cell`
+        /// - Parameter indexPath: `UITableViewCell`所在`UITableView`对应的索引
+        /// - Parameter index: `UITableViewCell`所在`Cell`对应的索引
+        public func configCell<C:UITableViewCell>(tableView:UITableView,
+                                                  cell:C,
+                                                  indexPath:IndexPath,
+                                                  index:Int) {
+            configCell?(tableView,cell,indexPath,index)
+        }
+        
         /// 点击`UITableViewCell`回掉
         /// - Parameter tableView: 所在的`UITableView`
         /// - Parameter tableViewCell: 点击的`UITableViewCell`对象
