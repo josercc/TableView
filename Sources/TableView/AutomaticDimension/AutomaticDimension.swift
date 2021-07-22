@@ -6,6 +6,7 @@
 //
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
 
 /// 自动计算高度对象
@@ -26,3 +27,4 @@ public class AutomaticDimension {
     public typealias ReloadCellHeightHandle = (_ completionHandle:@escaping ReloadCellHeightCompletion) -> Void
     var reloadCellHeightHandle:ReloadCellHeightHandle?
 }
+#endif

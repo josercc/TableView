@@ -5,6 +5,7 @@
 //  Created by joser on 2021/7/19.
 //
 
+#if canImport(UIKit)
 import UIKit
 import SnapKit
 
@@ -51,4 +52,5 @@ public extension AutomaticDimensionCell {
         }
     }
 }
+#endif
 

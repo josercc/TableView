@@ -5,6 +5,7 @@
 //  Created by joser on 2021/7/19.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public extension AutomaticDimension {
@@ -20,3 +21,4 @@ public extension AutomaticDimension {
         public let top:CGFloat
     }
 }
+#endif

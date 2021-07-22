@@ -6,6 +6,7 @@
 //  Copyright © 2020 zhanghang. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 extension TableView {
@@ -120,3 +121,5 @@ extension TableView {
         }
     }
 }
+
+#endif

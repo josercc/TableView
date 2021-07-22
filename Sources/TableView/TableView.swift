@@ -5,7 +5,7 @@
 //  Created by 张行 on 2020/5/29.
 //  Copyright © 2020 zhanghang. All rights reserved.
 //
-
+#if canImport(UIKit)
 import UIKit
 
 /// 一个表格的数据源
@@ -231,4 +231,4 @@ extension TableView {
         }
     }
 }
-
+#endif
