@@ -4,6 +4,8 @@
 
 OC版本功能比较齐全的库[点击这里](https://github.com/josercc/ZHTableViewGroup)
 
+详细的说明文档请前往[WIKI](https://github.com/josercc/TableView/wiki)
+
 ## 安装
 
 ```swift
