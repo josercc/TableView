@@ -4,7 +4,7 @@
 
 OC版本功能比较齐全的库[点击这里](https://github.com/josercc/ZHTableViewGroup)
 
-详细的说明文档请前往[WIKI](https://github.com/josercc/TableView/wiki)
+详细的说明文档请前往[这里](https://josercc.github.io/TableView/)
 
 ## 安装
 
@@ -41,42 +41,42 @@ open func numberOfSections(in tableView: UITableView) -> Int
 
 ```swift
 open func tableView(_ tableView: UITableView, 
-											numberOfRowsInSection section: Int) -> Int
+		      numberOfRowsInSection section: Int) -> Int
 ```
 
 ```swift
 open func tableView(_ tableView: UITableView, 
-											cellForRowAt indexPath: IndexPath) -> UITableViewCell
+		      cellForRowAt indexPath: IndexPath) -> UITableViewCell
 ```
 
 ```swift
 open func tableView(_ tableView: UITableView, 
-											didSelectRowAt indexPath: IndexPath)
+		      didSelectRowAt indexPath: IndexPath)
 ```
 
 ```swift
 open func tableView(_ tableView: UITableView, 
-											heightForRowAt indexPath: IndexPath) -> CGFloat
+		      heightForRowAt indexPath: IndexPath) -> CGFloat
 ```
 
 ```swift
 open func tableView(_ tableView: UITableView, 
-											viewForHeaderInSection section: Int) -> UIView?
+		      viewForHeaderInSection section: Int) -> UIView?
 ```
 
 ```swift
 open func tableView(_ tableView: UITableView, 
-											viewForFooterInSection section: Int) -> UIView?
+		      viewForFooterInSection section: Int) -> UIView?
 ```
 
 ```swift
 open func tableView(_ tableView: UITableView, 
-											heightForHeaderInSection section: Int) -> CGFloat
+		      heightForHeaderInSection section: Int) -> CGFloat
 ```
 
 ```swift
 open func tableView(_ tableView: UITableView, 
-											heightForFooterInSection section: Int) -> CGFloat
+		      heightForFooterInSection section: Int) -> CGFloat
 ```
 
 ## 怎么配置代理源(How to configure proxy source)
